@@ -1,0 +1,28 @@
+package intern; 
+import java.util.Scanner;
+
+public class Main {
+
+
+	public static void main(String args[]) { 
+		String text = new Scanner(System.in).nextLine(); 
+		String[] output = text.replace(".", "").replace("-", " ").split(" ");
+		int len = output.length;
+		int histogramp[] = new int[len];
+		for (int i = 0; i < len; i++) {
+			for (int j = 0; j < len; j++) {
+				if(output[i].equalsIgnoreCase(output[j]))
+					histogramp[i]++;
+			}
+		}
+		int max = 0;
+		for(int i =0;i<len;i++) {
+			if(histogramp[max]<histogramp[i])
+				max = i; 
+		}
+		System.out.println( String.format("%s = %d words",output[max], histogramp[max]));
+		
+
+	}
+
+}
